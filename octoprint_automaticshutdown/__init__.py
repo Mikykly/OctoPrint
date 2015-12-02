@@ -42,7 +42,7 @@ class AutomaticshutdownPlugin(octoprint.plugin.TemplatePlugin,
 			self._logger.info("Shutdown aborted.")
 
 	def on_event(self, event, payload):
-		if event != Events.PRINT_DONE:
+		if event != "SlicingDone":
 			return
 		if not self._automatic_shutdown_enabled or not self._settings.global_get(["server", "commands", "systemShutdownCommand"]):
 			return
